@@ -52,6 +52,12 @@ def on_generate():
     
     check_strength(pwd) 
 
+def copy_to_clipboard():
+    root.clipboard_clear() 
+    root.clipboard_append(entry_password.get())
+    messagebox.showinfo("Αντιγραφή", "Ο κωδικός αντιγράφηκε στο πρόχειρο!")
+
+
 
 
 root = tk.Tk()
@@ -84,6 +90,10 @@ entry_password.config(state='readonly')
 
 label_strength = tk.Label(frame, text="", font=("Arial", 30, "bold"))
 label_strength.pack(pady=5, padx=20)
+
+btn_copy = tk.Button(frame, text="Αντιγραφή κωδικού", command=copy_to_clipboard, font=("Arial", 30))
+btn_copy.pack(pady=10, padx=20)
+
 
 root.update_idletasks()  
 width = root.winfo_width()
